@@ -136,7 +136,7 @@ module containerAppsApp 'br/public:avm/res/app/container-app:0.9.0' = {
     environmentResourceId: containerAppsEnvironment.outputs.resourceId
     location: location
     tags: union(tags, { 'azd-service-name': serviceName })
-    ingressTargetPort: 8080
+    ingressTargetPort: 8000
     ingressExternal: true
     ingressTransport: 'auto'
     stickySessionsAffinity: 'sticky'
@@ -156,7 +156,7 @@ module containerAppsApp 'br/public:avm/res/app/container-app:0.9.0' = {
       secureList: [
         {
           name: 'azure-cosmos-db-table-endpoint'
-          value: cosmosDbAccount.outputs.endpoint
+          value: 'https://${cosmosDbAccount.outputs.name}.table.cosmos.azure.com:443/'
         }
         {
           name: 'user-assigned-managed-identity-client-id'
