@@ -35,7 +35,6 @@ func startCosmos(writeOutput func(msg string)) error {
 	writeOutput("Current Status:\tStarting...")
 
 	table := service.NewClient(tableName)
-	if err != nil { panic(err) }
 
 	writeOutput(fmt.Sprintf("Get table:\t%s", tableName))
 
