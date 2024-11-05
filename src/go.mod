@@ -6,6 +6,7 @@ require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.8.0
 	github.com/Azure/azure-sdk-for-go/sdk/data/aztables v1.3.0
 	github.com/googollee/go-socket.io v1.7.0
+	github.com/joho/godotenv v1.5.1
 )
 
 require (
@@ -17,7 +18,6 @@ require (
 	github.com/gomodule/redigo v1.8.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	golang.org/x/crypto v0.28.0 // indirect
