@@ -18,7 +18,7 @@ This is a simple web application to illustrate common basic usage of Azure Cosmo
 
 - [Docker](https://www.docker.com/)
 - [Azure Developer CLI](https://aka.ms/azd-install)
-- [Go 1.21 or newer](https://go.dev/dl/)
+- [Go 1.23 or newer](https://go.dev/dl/)
 
 ### Quickstart
 
