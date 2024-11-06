@@ -21,11 +21,12 @@ func startCosmos(writeOutput func(msg string)) error {
 	}
 
 	// <create_client>
-	endpoint := os.Getenv("CONFIGURATION__AZURECOSMOSDB__ENDPOINT")
-	tableName := os.Getenv("CONFIGURATION__AZURECOSMOSDB__TABLENAME")
+	endpoint, found := os.LookupEnv("CONFIGURATION__AZURECOSMOSDB__ENDPOINT")
+	if !found {
+		panic("Azure Cosmos DB for Table account endpoint not set.")
+	}
 
 	log.Println("ENDPOINT: ", endpoint)
-	log.Println("TABLE: ", endpoint)
 
 	credential, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -39,6 +40,13 @@ func startCosmos(writeOutput func(msg string)) error {
 	// </create_client>
 
 	writeOutput("Current Status:\tStarting...")
+
+	tableName, found := os.LookupEnv("CONFIGURATION__AZURECOSMOSDB__TABLENAME")
+	if !found {
+		tableName = "cosmicworks-products"
+	}
+
+	log.Println("TABLE: ", endpoint)
 
 	table := service.NewClient(tableName)
 
