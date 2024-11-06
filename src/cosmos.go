@@ -7,10 +7,10 @@ import (
 	"log"
 	"os"
 
-    "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-    "github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 )
 
 func startCosmos(writeOutput func(msg string)) error {
@@ -28,10 +28,14 @@ func startCosmos(writeOutput func(msg string)) error {
 	log.Println("TABLE: ", endpoint)
 
 	credential, err := azidentity.NewDefaultAzureCredential(nil)
-	if err != nil { panic(err) }
+	if err != nil {
+		panic(err)
+	}
 
 	service, err := aztables.NewServiceClient(endpoint, credential, nil)
-	if err != nil { panic(err) }
+	if err != nil {
+		panic(err)
+	}
 	// </create_client>
 
 	writeOutput("Current Status:\tStarting...")
@@ -43,24 +47,28 @@ func startCosmos(writeOutput func(msg string)) error {
 	{
 		entity := aztables.EDMEntity{
 			Entity: aztables.Entity{
-				RowKey: "70b63682-b93a-4c77-aad2-65501347265f",
+				RowKey:       "70b63682-b93a-4c77-aad2-65501347265f",
 				PartitionKey: "gear-surf-surfboards",
 			},
 			Properties: map[string]any{
-			"Name": "Yamba Surfboard",
-			"Quantity": 12,
-			"Price": 850.00,
-			"Clearance": false,
+				"Name":      "Yamba Surfboard",
+				"Quantity":  12,
+				"Price":     850.00,
+				"Clearance": false,
 			},
 		}
 
 		context := context.TODO()
 
 		bytes, err := json.Marshal(entity)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		_, err = table.UpsertEntity(context, bytes, nil)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		writeOutput(fmt.Sprintf("Upserted entity:\t%v", entity))
 	}
@@ -68,13 +76,13 @@ func startCosmos(writeOutput func(msg string)) error {
 	{
 		entity := aztables.EDMEntity{
 			Entity: aztables.Entity{
-				RowKey: "25a68543-b90c-439d-8332-7ef41e06a0e0",
+				RowKey:       "25a68543-b90c-439d-8332-7ef41e06a0e0",
 				PartitionKey: "gear-surf-surfboards",
 			},
 			Properties: map[string]any{
-				"Name": "Kiama Classic Surfboard",
-				"Quantity": 25,
-				"Price": 790.00,
+				"Name":      "Kiama Classic Surfboard",
+				"Quantity":  25,
+				"Price":     790.00,
 				"Clearance": true,
 			},
 		}
@@ -82,10 +90,14 @@ func startCosmos(writeOutput func(msg string)) error {
 		context := context.TODO()
 
 		bytes, err := json.Marshal(entity)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		_, err = table.UpsertEntity(context, bytes, nil)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		writeOutput(fmt.Sprintf("Upserted entity:\t%v", entity))
 	}
@@ -97,11 +109,15 @@ func startCosmos(writeOutput func(msg string)) error {
 		partitionKey := "gear-surf-surfboards"
 
 		response, err := table.GetEntity(context, partitionKey, rowKey, nil)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		var entity aztables.EDMEntity
 		err = json.Unmarshal(response.Value, &entity)
-		if err != nil { panic(err) }
+		if err != nil {
+			panic(err)
+		}
 
 		writeOutput(fmt.Sprintf("Read item row key:\t%s", entity.RowKey))
 	}
@@ -119,11 +135,15 @@ func startCosmos(writeOutput func(msg string)) error {
 
 		for pager.More() {
 			response, err := pager.NextPage(context)
-			if err != nil { panic(err) }
+			if err != nil {
+				panic(err)
+			}
 			for _, entityBytes := range response.Entities {
 				var entity aztables.EDMEntity
 				err := json.Unmarshal(entityBytes, &entity)
-				if err != nil { panic(err) }
+				if err != nil {
+					panic(err)
+				}
 
 				writeOutput(fmt.Sprintf("Found item:\t%s\t%s", entity.Properties["Name"], entity.RowKey))
 			}
