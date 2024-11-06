@@ -16,7 +16,9 @@ import (
 func startCosmos(writeOutput func(msg string)) error {
 
 	err := godotenv.Load()
-	if err != nil { panic(err) }
+	if err != nil {
+		log.Println("Warning: .env file not found, proceeding without it")
+	}
 
 	// <create_client>
 	endpoint := os.Getenv("CONFIGURATION__AZURECOSMOSDB__ENDPOINT")
