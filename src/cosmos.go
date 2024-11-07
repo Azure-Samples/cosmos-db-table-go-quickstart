@@ -55,7 +55,7 @@ func startCosmos(writeOutput func(msg string)) error {
 	{
 		entity := aztables.EDMEntity{
 			Entity: aztables.Entity{
-				RowKey:       "70b63682-b93a-4c77-aad2-65501347265f",
+				RowKey:       "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
 				PartitionKey: "gear-surf-surfboards",
 			},
 			Properties: map[string]any{
@@ -84,7 +84,7 @@ func startCosmos(writeOutput func(msg string)) error {
 	{
 		entity := aztables.EDMEntity{
 			Entity: aztables.Entity{
-				RowKey:       "25a68543-b90c-439d-8332-7ef41e06a0e0",
+				RowKey:       "bbbbbbbb-1111-2222-3333-cccccccccccc",
 				PartitionKey: "gear-surf-surfboards",
 			},
 			Properties: map[string]any{
@@ -113,7 +113,7 @@ func startCosmos(writeOutput func(msg string)) error {
 	{
 		context := context.TODO()
 
-		rowKey := "70b63682-b93a-4c77-aad2-65501347265f"
+		rowKey := "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
 		partitionKey := "gear-surf-surfboards"
 
 		response, err := table.GetEntity(context, partitionKey, rowKey, nil)

@@ -1,3 +1,4 @@
+<!--
 ---
 page_type: sample
 name: "Quickstart: Azure Cosmos DB for Table and Azure SDK for Go"
@@ -9,18 +10,19 @@ languages:
 products:
 - azure-cosmos-db
 ---
+-->
 
 # Quickstart: Azure Cosmos DB for Table - Azure SDK for Go
 
 This is a simple web application to illustrate common basic usage of Azure Cosmos DB for Table with the Azure SDK for Go.
 
-### Prerequisites
+## Prerequisites
 
 - [Docker](https://www.docker.com/)
 - [Azure Developer CLI](https://aka.ms/azd-install)
 - [Go 1.23 or newer](https://go.dev/dl/)
 
-### Quickstart
+## Quickstart
 
 1. Log in to Azure Developer CLI.
 
