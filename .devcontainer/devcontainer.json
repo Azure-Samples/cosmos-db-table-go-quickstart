@@ -8,9 +8,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "golang.Go"
+        "golang.Go",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-cosmosdb"
       ]
     }
-  },
-  "updateContentCommand": "go install honnef.co/go/tools/cmd/staticcheck@latest"
+  }
 }
